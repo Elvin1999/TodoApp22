@@ -79,7 +79,11 @@
               <div *ngSwitchDefault>No</div>
             </div> -->
               <td>
-                <input type="checkbox" [(ngModel)]="item.action" />
+                <input
+                  (change)="saveToStorage()"
+                  type="checkbox"
+                  [(ngModel)]="item.action"
+                />
               </td>
             </tr>
           </tbody>

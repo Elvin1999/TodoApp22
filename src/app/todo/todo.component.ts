@@ -9,7 +9,9 @@ import { ToDoItem } from '../todoitem';
 })
 export class TodoComponent {
   displayAll: boolean = true;
-  constructor() {}
+  constructor() {
+    this.model.items = JSON.parse(localStorage.getItem('newitems'));
+  }
   message = '';
   style = 'color:green';
   model = new Model();
@@ -28,11 +30,15 @@ export class TodoComponent {
     // console.log(value);
     if (value != '') {
       this.model.items.push(new ToDoItem(1, value, false));
+      this.saveToStorage();
       this.message = '';
       value = '';
     } else {
       alert('Please input info');
     }
+  }
+  saveToStorage() {
+    localStorage.setItem('newitems', JSON.stringify(this.model.items));
   }
   getItems() {
     if (this.displayAll) {
