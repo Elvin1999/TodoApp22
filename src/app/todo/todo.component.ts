@@ -10,7 +10,7 @@ import { ToDoItem } from '../todoitem';
 export class TodoComponent {
   displayAll: boolean = true;
   constructor() {}
-  message = 'no message';
+  message = '';
   style = 'color:green';
   model = new Model();
   getName() {
@@ -41,13 +41,13 @@ export class TodoComponent {
     return this.model.items.filter((item) => item.action == false);
   }
   getToDoCount() {
-    return this.model.items.filter;
+    return this.model.items.filter((i) => i.action == true).length;
   }
-  // getSpecialClasses() {
-  //   return {
-  //     disabled: this.message.length == 0,
-  //     'btn-secondary': this.message.length == 0,
-  //     'btn-primary': this.message.length > 0,
-  //   };
-  // }
+  GetSpecialClasses() {
+    return {
+      disabled: this.message.length == 0,
+      'btn-outline-secondary': this.message.length == 0,
+      'btn-outline-primary': this.message.length > 0,
+    };
+  }
 }

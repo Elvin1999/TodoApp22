@@ -13,14 +13,14 @@
         />
         <!-- (blur)="addItem(input.value)" -->
         <button
+          [class]="GetSpecialClasses()"
           class="btn btn-outline-primary"
           (click)="addItem(input.value); input.value = ''"
         >
           Add
         </button>
       </div>
-      <h6>Message : {{ message }}</h6>
-      <h6>{{ displayAll }}</h6>
+      <h1>{{ displayAll }}</h1>
       <div class="form-check mb-3">
         <input
           type="checkbox"
@@ -30,16 +30,16 @@
         />
         <label for="displayAll" class="form-check-label">Show All</label>
       </div>
-      <!-- <div *ngIf="getToDoCount() != 0" class="alert alert-success">
-        {{ getToDoCount() }} mission completed successfully
-      </div> -->
+      <div *ngIf="getToDoCount() != 0" class="alert alert-success">
+        {{ getToDoCount() }} mission complated successfully
+      </div>
       <div
         class="alert alert-warning"
-        *ngIf="getItems().length == 0; else itemsTemplate"
+        *ngIf="getItems().length == 0; else itemsTable"
       >
-        List is empty
+        List is Empty
       </div>
-      <ng-template #itemsTemplate>
+      <ng-template #itemsTable>
         <table class="table table-bordered">
           <thead>
             <tr>
@@ -50,13 +50,11 @@
             </tr>
           </thead>
           <tbody #tbody>
-            <!-- [class.my-bg-primary]="item.action"
-            [class.bg-warning]="!item.action" -->
             <tr
               [class]="{
                 'my-bg-primary': item.action,
                 'bg-warning': !item.action,
-                bigger: getItems().length - getToDoCount() >= 5
+                bigger: getItems().length - getToDoCount() == 5
               }"
               (click)="ChangeColor(tbody, tr.style)"
               #tr
@@ -64,36 +62,24 @@
             >
               <td>{{ i + 1 }}</td>
               <td>{{ item.description }}</td>
-
               <!-- <td *ngIf="item.action">Yes</td>
-                <td *ngIf="!item.action">No</td> -->
-
-              <!-- <div [ngSwitch]="item.action">
-                <div *ngSwitchCase="true">Yes</div>
-                <div *ngSwitchDefault>No</div>
-              </div> -->
-
-              <!-- if else bloku -->
-
-              <!-- <div *ngIf="item.action; else noTemplate">Yes</div>
-              <ng-template #noTemplate> 
-              <h5 style="color:red" >No</h5>  
-              </ng-template> -->
+              <td *ngIf="!item.action">No</td> -->
 
               <div *ngIf="item.action; then yesTemplate; else noTemplate">
-                Not effected data
+                Not effected data>
               </div>
-
-              <ng-template #yesTemplate>
-                <h5 style="color:orange">Yes</h5>
-              </ng-template>
-
               <ng-template #noTemplate>
-                <h5 style="color:red">No</h5>
-              </ng-template>
-
+                <h5 style="color:red;">No</h5></ng-template
+              >
+              <ng-template #yesTemplate>
+                <h5 style="color:orange;">Yes</h5></ng-template
+              >
+              <!-- <div [ngSwitch]="item.action">
+              <div *ngSwitchCase="true">Yes</div>
+              <div *ngSwitchDefault>No</div>
+            </div> -->
               <td>
-                <input [(ngModel)]="item.action" type="checkbox" />
+                <input type="checkbox" [(ngModel)]="item.action" />
               </td>
             </tr>
           </tbody>
@@ -101,10 +87,10 @@
       </ng-template>
 
       <!-- <ul>
-            <li *ngFor="let item of items" >
-                {{item}}
-            </li>
-        </ul> -->
+          <li *ngFor="let item of items" >
+              {{item}}
+          </li>
+      </ul> -->
     </div>
   </div>
 </div>
