@@ -46,8 +46,12 @@
           >
             <td>{{ i + 1 }}</td>
             <td>{{ item.description }}</td>
-            <td *ngIf="item.action">Yes</td>
-            <td *ngIf="!item.action">No</td>
+            <!-- <td *ngIf="item.action">Yes</td>
+            <td *ngIf="!item.action">No</td> -->
+            <div [ngSwitch]="item.action">
+              <div *ngSwitchCase="true">Yes</div>
+              <div *ngSwitchDefault>No</div>
+            </div>
           </tr>
         </tbody>
       </table>
