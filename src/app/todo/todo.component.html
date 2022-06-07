@@ -9,6 +9,7 @@
           class="form-control"
           (keyup.enter)="addItem(input.value)"
           input.value=""
+          [(ngModel)]="message"
         />
         <!-- (blur)="addItem(input.value)" -->
         <button
@@ -18,7 +19,8 @@
           Add
         </button>
       </div>
-      <h1>{{ displayAll }}</h1>
+      <h6>Message : {{ message }}</h6>
+      <h6>{{ displayAll }}</h6>
       <div class="form-check mb-3">
         <input
           type="checkbox"
@@ -28,7 +30,7 @@
         />
         <label for="displayAll" class="form-check-label">Show All</label>
       </div>
-      <table class="table table-bordered">
+      <table *ngIf="getItems().length > 0" class="table table-bordered">
         <thead>
           <tr>
             <th></th>
@@ -49,7 +51,9 @@
           </tr>
         </tbody>
       </table>
-
+      <div class="alert alert-warning" *ngIf="getItems().length == 0">
+        List is empty
+      </div>
       <!-- <ul>
             <li *ngFor="let item of items" >
                 {{item}}
