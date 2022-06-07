@@ -40,4 +40,14 @@ export class TodoComponent {
     }
     return this.model.items.filter((item) => item.action == false);
   }
+  getToDoCount() {
+    return this.model.items.filter;
+  }
+  // getSpecialClasses() {
+  //   return {
+  //     disabled: this.message.length == 0,
+  //     'btn-secondary': this.message.length == 0,
+  //     'btn-primary': this.message.length > 0,
+  //   };
+  // }
 }

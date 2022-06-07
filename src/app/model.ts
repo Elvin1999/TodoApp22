@@ -7,9 +7,9 @@ export class Model {
   constructor() {
     this.name = 'Elvin';
     this.items = [
-      //   new ToDoItem(1, 'Breakfast', true),
-      //   new ToDoItem(2, 'Sport', false),
-      //   new ToDoItem(3, 'Read Book', false),
+      new ToDoItem(1, 'Breakfast', true),
+      new ToDoItem(2, 'Sport', false),
+      new ToDoItem(3, 'Read Book', false),
     ];
   }
 }
